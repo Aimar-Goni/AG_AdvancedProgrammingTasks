@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,28 +27,19 @@ public class Inventory
         items.Add(new Item("Shield", 100));
         items.Add(new Item("Bow", 120));
         items.Add(new Item("Helmet", 80));
-        
-        for (int i = 1; i <= 40; i++)
-        {
-            // Generate a unique name and value for each item
-            string itemName = $"Item{i}";  // e.g., Item1, Item2, ..., Item10000
-            int itemValue = i * 10;        // e.g., 10, 20, ..., 100000
-            
-            // Create a new Item and add it to the inventory
-            items.Add(new Item(itemName, itemValue));
-        }
+
     }
 
 
-    
+
     public void InsertionSort<TKey>(Func<Item, TKey> keySelector, bool ascending, int left, int right) where TKey : IComparable
     {
         for (int i = left + 1; i <= right; i++)
         {
             Item temp = items[i];
             int j = i - 1;
-            while (j >= left && 
-            (ascending ? keySelector(items[j]).CompareTo(keySelector(temp)) > 0 : 
+            while (j >= left &&
+            (ascending ? keySelector(items[j]).CompareTo(keySelector(temp)) > 0 :
             keySelector(items[j]).CompareTo(keySelector(temp)) < 0))
             {
                 items[j + 1] = items[j];
@@ -57,7 +49,7 @@ public class Inventory
         }
     }
 
-    public void Merge(int l, int m, int r, Func<Item, IComparable> keySelector)
+    public void Merge(bool ascending,int l, int m, int r, Func<Item, IComparable> keySelector)
     {
         int len1 = m - l + 1, len2 = r - m;
         Item[] left = new Item[len1];
@@ -73,7 +65,7 @@ public class Inventory
 
         while (i < len1 && j < len2)
         {
-            if (keySelector(left[i]).CompareTo(keySelector(right[j])) <= 0)
+            if (ascending ? keySelector(left[i]).CompareTo(keySelector(right[j])) < 0 : keySelector(left[i]).CompareTo(keySelector(right[j])) > 0)
             {
                 items[k] = left[i];
                 i++;
@@ -99,26 +91,29 @@ public class Inventory
             k++;
             j++;
         }
+
     }
 
     public void TimSort(Func<Item, IComparable> keySelector, bool ascending = true)
     {
-        int RUN = 32;
+        int RUN = 4;
         int listSize = items.Count;
         for (int i = 0; i < listSize; i += RUN)
             InsertionSort(keySelector, ascending, i, Math.Min((i + RUN - 1), (listSize - 1)));
 
-        for (int size = RUN; size < listSize; size = 2 * size)
+        for (int size = RUN; size < listSize + RUN; size = 2 * size)
         {
+
             for (int left = 0; left < listSize; left += 2 * size)
             {
                 int mid = left + size - 1;
                 int right = Math.Min((left + 2 * size - 1), (listSize - 1));
 
                 if (mid < right)
-                    Merge(left, mid, right, keySelector);
+                    Merge(ascending,left, mid, right, keySelector);
             }
         }
+
     }
 
 
@@ -141,21 +136,23 @@ public class Program
 
         Console.WriteLine("Original Inventory:");
         inventory.DisplayInventory();
-
+        
         Console.WriteLine("\nSorted by Name (Ascending):");
-        inventory.TimSort(item => item.Name,true); // Sort by Name in ascending order
+        inventory.TimSort(item => item.Name, true); // Sort by Name in ascending order
         inventory.DisplayInventory();
 
         Console.WriteLine("\nSorted by Name (Descending):");
-        inventory.TimSort(item => item.Name,false); // Sort by Name in descending order
-        inventory.DisplayInventory();
-        
-        Console.WriteLine("\nSorted by Value (Ascending):");
-        inventory.TimSort(item => item.Value,true); // Sort by Value in ascending order
+        inventory.TimSort(item => item.Name, false); // Sort by Name in descending order
         inventory.DisplayInventory();
 
+       
         Console.WriteLine("\nSorted by Value (Descending):");
-        inventory.TimSort(item => item.Value,false); // Sort by Value in descending order
+        inventory.TimSort(item => item.Value, false); // Sort by Value in descending order
+        inventory.DisplayInventory(); 
+
+        Console.WriteLine("\nSorted by Value (Ascending):");
+        inventory.TimSort(item => item.Value, true); // Sort by Value in ascending order
         inventory.DisplayInventory();
+        
     }
 }
