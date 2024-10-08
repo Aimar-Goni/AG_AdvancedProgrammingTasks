@@ -1,0 +1,159 @@
+Card ID,Card Name,Card URL,Card Description,Labels,Members,Due Date,Attachment Count,Attachment Links,Checklist Item Total Count,Checklist Item Completed Count,Vote Count,Comment Count,Last Activity Date,List ID,List Name,Board ID,Board Name,Archived,Start Date,Due Complete
+670513d2ae8ca23605890db3,Begin UI,https://trello.com/c/0G5UG1bX/3-begin-ui,"# Week 1
+
+This first week will consist on planning the UI design.
+
+Developer 2 will work on this alone
+
+- UI prototype design",User Interface  UI  (green),zombidito66,,0,,0,0,0,0,2024-10-08T15:03:37.080Z,6705133e8ced33e9b71cba4c,Sprint 1,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+670513d7d849d71e479c629d,Setup Project,https://trello.com/c/cOy7huVT/4-setup-project,"# Week 1
+
+This week will consist of creating the base structures to maintain the project.
+
+This phase will consist of a pair programming of the general programmer and Developer 1.
+
+Work to do:
+
+- Create the basic project and setup the repositories and install all the needed libraries.
+- Setup the base testing units.
+- Create a first prototype for a simple math exercise like addition.",Core Gameplay (yellow),"developer1212, elgoni64",,0,,0,0,0,0,2024-10-08T15:04:03.726Z,6705133e8ced33e9b71cba4c,Sprint 1,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+670513d9b0549ef823de9f9d,Begin Core Gameplay,https://trello.com/c/QNOD7lOj/5-begin-core-gameplay,"# Week 2
+
+In week 2 the developers will separate in different work objectives and will start to implement the systems.
+
+This will be done by the general programmer
+
+- Implement the addition and subtraction.
+- Implement different difficulty levels.",Core Gameplay (yellow),elgoni64,,0,,0,0,0,0,2024-10-08T15:03:59.270Z,670513446efa604776c83a43,Sprint 2,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+670513e8b8b6f49ecbcfc0be,Implement UI,https://trello.com/c/f9tFfQse/7-implement-ui,"# Week 2
+
+In week 2 the developers will separate in different work objectives and will start to implement the systems.
+
+This will be done by Developer 2
+
+- Implement UI design on the game.
+- Create the basic UI functionalities like buttons.",User Interface  UI  (green),zombidito66,,0,,0,0,0,0,2024-10-08T15:04:15.426Z,670513446efa604776c83a43,Sprint 2,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+6705140732543164743e50ce,Begin Dialogue System,https://trello.com/c/6lI5ZWhk/12-begin-dialogue-system,"# Week 2
+
+In week 2 the developers will separate in different work objectives and will start to implement the systems.
+
+This will be done by Developer 1
+
+- Design the dialogue on paper.
+- First dialogue prototype.",Dialogue System (orange),developer1212,,0,,0,0,0,0,2024-10-08T15:04:21.228Z,670513446efa604776c83a43,Sprint 2,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+670513dd9b5c1d3a3285418b,Finish Core Gameplay,https://trello.com/c/wFZxD4oM/6-finish-core-gameplay,"# Week 3
+
+In week 3 the developers will continue working on their own assignments
+
+This will be done by the general developer
+
+- Implement exercises like multiplication and division.
+- Implement different difficulty levels.",Core Gameplay (yellow),elgoni64,,0,,0,0,0,0,2024-10-08T15:04:51.207Z,6705135ca3bb67c919c8c28d,Sprint 3,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+670513eaf227f870e590bf0a,Finish UI,https://trello.com/c/6a8tLofB/8-finish-ui,"# Week 3
+
+In week 3 the developers will continue working on their own assignments
+
+This will be done by the Developer 2
+
+- Finish the UI systems",User Interface  UI  (green),zombidito66,,0,,0,0,0,0,2024-10-08T15:04:36.978Z,6705135ca3bb67c919c8c28d,Sprint 3,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+670514086d65a09f154db0d3,Implement Dialogue System,https://trello.com/c/Xy1AvgOT/13-implement-dialogue-system,"# Week 3
+
+In week 3 the developers will continue working on their own assignments
+
+This will be done by the Developer 1
+
+- Finish implementing the dialogue system.",Dialogue System (orange),developer1212,,0,,0,0,0,0,2024-10-08T15:04:31.016Z,6705135ca3bb67c919c8c28d,Sprint 3,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+670513ef38a157d80af55604,Test UI,https://trello.com/c/C715pIEk/9-test-ui,"# Week 4
+
+In week 4 the developers will finish their own assignments and start new ones
+
+This will be done by the Developer 2
+
+- Test the UI",User Interface  UI  (green),zombidito66,,0,,0,0,0,0,2024-10-08T15:05:00.231Z,6705136a89dc2be5b80973df,Sprint 4,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+67051416c6cde6901a80062d,Begin Localization,https://trello.com/c/FgfJtXAF/15-begin-localization,"# Week 4
+
+In week 4 the developers will finish their own assignments and start new ones
+
+This will be done by the general developer as he knows spanish
+
+- Begin localizing the dialogs to spanish.
+- Outsource the Korean localization.",Localization (blue),elgoni64,,0,,0,0,0,0,2024-10-08T15:05:07.737Z,6705136a89dc2be5b80973df,Sprint 4,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+6705140a2711bf437cd41c33,Finish Dialogue System,https://trello.com/c/Kj1lKIaF/14-finish-dialogue-system,"# Week 3
+
+In week 3 the developers will continue working on their own assignments
+
+This will be done by the Developer 1
+
+- Finish dialogue system",Dialogue System (orange),developer1212,,0,,0,0,0,0,2024-10-08T15:05:57.052Z,6705136a89dc2be5b80973df,Sprint 4,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+67051418feadba018e604075,Implement Localization,https://trello.com/c/hscbZk0e/16-implement-localization,"# Week 5
+
+In week 5 the developers will have finished their assigned work and will start developing the progression system doing pair programming.
+
+This will be done by general developer
+
+- Finish the Spanish localization.
+- Implement the Spanish and Korean localization",Localization (blue),elgoni64,,0,,0,0,0,0,2024-10-08T15:06:08.133Z,6705136e3e1427f1b4956349,Sprint 5,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+670513f5d2ae4cfe4639fdef,Begin Progression System,https://trello.com/c/eQp7Iv4F/10-begin-progression-system,"# Week 5
+
+In week 5 the developers will have finished their assigned work and will start developing the progression system doing pair programming.
+
+This will be done by Developer 1 and 2
+
+- Design the progression system.
+- Setup the points where the game will save.
+- Begin implementing the system.",Progression System (pink),"developer1212, zombidito66",,0,,0,0,0,0,2024-10-08T15:06:17.860Z,6705136e3e1427f1b4956349,Sprint 5,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+6705144d22e7d6d86a1cd4ff,Begin Rewards System,https://trello.com/c/8etamDvY/20-begin-rewards-system,"# Week 6
+
+In week 6 the developers will start designing the reward system.
+
+This will be done by general developer.
+
+- Design the reward system.
+- Begin implementing the system.",Rewards System (sky),elgoni64,,0,,0,0,0,0,2024-10-08T15:06:38.396Z,670513730a7037d41af68f6e,Sprint 6,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+67051db55b18a5f92de57f82,Continue Progression System,https://trello.com/c/6uulk5PF/21-continue-progression-system,"# Week 6
+
+In week 6 the developers will continue with the progression system doing pair programming.
+
+This will be done by Developer 1 and 2
+
+- Continue with the progression system.",Progression System (pink),"developer1212, zombidito66",,0,,0,0,0,0,2024-10-08T15:07:22.441Z,670513730a7037d41af68f6e,Sprint 6,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+67051435a71d73b458bcf1d0,Finish and Implement Rewards System,https://trello.com/c/AxS9smZz/18-finish-and-implement-rewards-system,"# Week 7
+
+In week 7 the developers will finish working on the assigned systems but each on their own,
+
+This will be done by general developer
+
+- Finish the reward system.",Rewards System (sky),elgoni64,,0,,0,0,0,0,2024-10-08T15:06:49.714Z,67051378151d9db248c59bfc,Sprint 7,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+670514432f36e147f35e3dd6,Begin Sound Effects and Animations,https://trello.com/c/dTnTM7AD/19-begin-sound-effects-and-animations,"# Week 7
+
+In week 7 the developers will finish working on the assigned systems but each on their own.
+
+This will be done by Developer 2
+
+- List all the sound effect and animations needed.
+- Decide witch ones to do and witch to buy.
+- Find the assets online and buy them.
+- Create the needed assets.",Sound Effects and Animations (lime),zombidito66,,0,,0,0,0,0,2024-10-08T15:06:55.393Z,67051378151d9db248c59bfc,Sprint 7,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+67051e605dab09408fdad558,Finish Progression System,https://trello.com/c/G4d9tzWE/22-finish-progression-system,"# Week 7
+
+In week 7 the developers will finish working on the assigned systems but each on their own,
+
+This will be done by Developer 1
+
+- Finish the progression system.",Progression System (pink),developer1212,,0,,0,0,0,0,2024-10-08T15:07:00.852Z,67051378151d9db248c59bfc,Sprint 7,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+670513c0c4b73c731f050c6b,Finish Sound Effects and Animations:,https://trello.com/c/2jBzlQDN/1-finish-sound-effects-and-animations,"# Week 8
+
+In week 8 the developers will finish the systems and do general testing
+
+This will be done by Developer 1 and developer 2
+
+- Implement the sound and animation assets.
+- Test the end result.",Sound Effects and Animations (lime),"developer1212, zombidito66",,0,,0,0,0,0,2024-10-08T15:07:07.016Z,6705137c946b3a0db2ce0a48,Sprint 8,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
+67052be6adf46aa956575dca,Testing,https://trello.com/c/jOoXoqi5/24-testing,"# Week 8
+
+In week 8 the main developer will test the whole project and will check if all the systems work together.
+
+This will be done by general developer
+
+- Test the game.
+- Fix small bugs and issues.",Testing (purple),elgoni64,,0,,0,0,0,0,2024-10-08T14:41:47.574Z,6705137c946b3a0db2ce0a48,Sprint 8,6705131d35792e397ef39843,Educational Maths Game Development,false,,false
