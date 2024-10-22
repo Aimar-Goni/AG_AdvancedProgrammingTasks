@@ -37,6 +37,17 @@ public class HealthPotionSystem
         potions.Add(new Potion("Small Potion", 10));
         potions.Add(new Potion("Medium Potion", 20));
         potions.Add(new Potion("Large Potion", 50));
+
+
+    }
+
+    public int TakePotion(Potion potion, Player player)
+    {
+        player.CurrentHealth += potion.HealingValue;
+        if (player.CurrentHealth > player.MaxHealth)
+            player.CurrentHealth = player.MaxHealth;
+        Console.WriteLine($"{potion.Name} Used to heal {player.Name}: Current Health = {player.CurrentHealth}, Max Health = {player.MaxHealth}");
+        return player.MaxHealth - player.CurrentHealth;
     }
 
     // Method to determine the optimal potions to consume for each player
@@ -58,6 +69,22 @@ public class HealthPotionSystem
 
             // Implement your solution here to consume potions optimally based on healthNeeded for each player
 
+            while (healthNeeded > 0)
+            {
+                foreach (var potion in potions)
+                {
+                    if (potion.HealingValue <= healthNeeded)
+                    {
+                        healthNeeded = TakePotion(potion, player);
+                        break;
+                    }
+                    if (healthNeeded < potions[potions.Count - 1].HealingValue)
+                    {
+                        healthNeeded = TakePotion(potions[potions.Count - 1], player);
+                        break;
+                    }
+                }
+            }
 
             if (player.CurrentHealth < player.MaxHealth)
             {
