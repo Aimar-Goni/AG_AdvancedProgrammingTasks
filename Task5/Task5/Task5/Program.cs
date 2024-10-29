@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using static System.Net.WebRequestMethods;
 
 // Define the target types
 public enum TargetType
@@ -42,6 +43,9 @@ public class Spell
     public void PrintSpell() => Console.WriteLine($"Name: {Name}, Mana Cost: {ManaCost}, Power: {Power}, Target: {Target}, Type: {Type}");
     
 }
+
+//https://en.wikipedia.org/wiki/Levenshtein_distance
+// http://www.blackbeltcoder.com/Articles/algorithms/phonetic-string-comparison-with-soundex
 
 public class Program
 {
