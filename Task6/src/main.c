@@ -1,28 +1,3 @@
-/*
-Raylib example file.
-This is an example main file for a simple raylib project.
-Use this as a starting point or replace it with your code.
-
-For a C++ project simply rename the file to .cpp and re-run the build script 
-
--- Copyright (c) 2020-2024 Jeffery Myers
---
---This software is provided "as-is", without any express or implied warranty. In no event 
---will the authors be held liable for any damages arising from the use of this software.
-
---Permission is granted to anyone to use this software for any purpose, including commercial 
---applications, and to alter it and redistribute it freely, subject to the following restrictions:
-
---  1. The origin of this software must not be misrepresented; you must not claim that you 
---  wrote the original software. If you use this software in a product, an acknowledgment 
---  in the product documentation would be appreciated but is not required.
---
---  2. Altered source versions must be plainly marked as such, and must not be misrepresented
---  as being the original software.
---
---  3. This notice may not be removed or altered from any source distribution.
-
-*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -133,26 +108,15 @@ int main ()
 	}
 
 
-	Entities[0].PositionX = 256;
-	Entities[0].PositionY = 256;
-	Entities[0].VelocityX = 1;
-	Entities[0].VelocityY = 0;
-	Entities[0].Rotation = 0;
-	Entities[0].Turning = false;
-
-	Entities[1].PositionX = 198;
-	Entities[1].PositionY = 256;
-	Entities[1].VelocityX = 1;
-	Entities[1].VelocityY = 0;
-	Entities[1].Rotation = 0;
-	Entities[1].Turning = false;
-
-	Entities[1].PositionX = 134;
-	Entities[1].PositionY = 256;
-	Entities[1].VelocityX = 1;
-	Entities[1].VelocityY = 0;
-	Entities[1].Rotation = 0;
-	Entities[2].Turning = false;
+	for (int i = 0; i < EntityCount; i++)
+	{
+		Entities[i].PositionX = 256 - (i * 64);
+		Entities[i].PositionY = 256;
+		Entities[i].VelocityX = 1;
+		Entities[i].VelocityY = 0;
+		Entities[i].Rotation = 90;
+		Entities[i].Turning = false;
+	}
 
 	int lastKeyPressed = 1;
 	float timer = 0.0f;

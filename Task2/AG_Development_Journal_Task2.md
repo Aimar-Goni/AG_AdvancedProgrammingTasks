@@ -134,8 +134,6 @@ We regularly updated the Trello board with task statuses, comments, and due date
 ![Sprint Overview Calendar](Overview.png)
 *Figure 1. Sprint overview calendar showing all assignments.*
 
-*(Note: This is where the first calendar photo with an overview of all assignments would be added.)*
-
 **Localization Implementation:**
 
 - **Resource Files:** We stored all text in resource files, one for each language.
@@ -162,11 +160,6 @@ We regularly updated the Trello board with task statuses, comments, and due date
 
 - **Simplified Navigation:** Minimized the number of screens to prevent confusion.
 
-![Sprint 3 Assignments](Calendar3.png)
-*Figure 4. Sprint 3 assignments focusing on finishing core gameplay and UI.*
-
-*(Note: This is where the second calendar photo with assignments for Sprint 3 would be added.)*
-
 ### Did you have any technical difficulties? If so, what were they and did you manage to overcome them?
 
 **Risk Mitigation:**
@@ -185,16 +178,16 @@ We regularly updated the Trello board with task statuses, comments, and due date
 - **Screenshots:**
 
   ![Trello Board Overview](Overview.png)
-  *Figure 5. Trello board overview showing all sprints and tasks.*
+  *Figure 2. Trello board overview showing all sprints and tasks.*
 
   ![Task List and Assignments](Calendar1.png)
-  *Figure 6. Detailed task list with assignments and due dates.*
+  *Figure 3. Detailed task list with assignments and due dates.*
 
   ![Task List and Assignments](Calendar2.png)
-  *Figure 7. Detailed task list with assignments and due dates.*
+  *Figure 4. Detailed task list with assignments and due dates.*
 
   ![Task List and Assignments](Calendar3.png)
-  *Figure 8. Detailed task list with assignments and due dates.*
+  *Figure 5. Detailed task list with assignments and due dates.*
 
 **Achievements:**
 

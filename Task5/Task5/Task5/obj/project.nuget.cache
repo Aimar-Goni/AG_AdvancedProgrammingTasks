@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ow4YEJcaY94=",
+  "dgSpecHash": "ovgOwVCrvRs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\2410569.UCREATIVE\\Documents\\GitHub\\AG_AdvancedProgrammingTasks\\Task5\\Task5\\Task5\\Task5.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Clase\\AG_AdvancedProgrammingTasks\\Task5\\Task5\\Task5\\Task5.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\elgon\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

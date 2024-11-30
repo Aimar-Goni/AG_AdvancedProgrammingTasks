@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\2410569.UCREATIVE\\Documents\\GitHub\\AG_AdvancedProgrammingTasks\\Task5\\Task5\\Task5\\Task5.csproj": {}
+    "C:\\Clase\\AG_AdvancedProgrammingTasks\\Task5\\Task5\\Task5\\Task5.csproj": {}
   },
   "projects": {
-    "C:\\Users\\2410569.UCREATIVE\\Documents\\GitHub\\AG_AdvancedProgrammingTasks\\Task5\\Task5\\Task5\\Task5.csproj": {
+    "C:\\Clase\\AG_AdvancedProgrammingTasks\\Task5\\Task5\\Task5\\Task5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\2410569.UCREATIVE\\Documents\\GitHub\\AG_AdvancedProgrammingTasks\\Task5\\Task5\\Task5\\Task5.csproj",
+        "projectUniqueName": "C:\\Clase\\AG_AdvancedProgrammingTasks\\Task5\\Task5\\Task5\\Task5.csproj",
         "projectName": "Task5",
-        "projectPath": "C:\\Users\\2410569.UCREATIVE\\Documents\\GitHub\\AG_AdvancedProgrammingTasks\\Task5\\Task5\\Task5\\Task5.csproj",
-        "packagesPath": "C:\\Users\\2410569.UCREATIVE\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\2410569.UCREATIVE\\Documents\\GitHub\\AG_AdvancedProgrammingTasks\\Task5\\Task5\\Task5\\obj\\",
+        "projectPath": "C:\\Clase\\AG_AdvancedProgrammingTasks\\Task5\\Task5\\Task5\\Task5.csproj",
+        "packagesPath": "C:\\Users\\elgon\\.nuget\\packages\\",
+        "outputPath": "C:\\Clase\\AG_AdvancedProgrammingTasks\\Task5\\Task5\\Task5\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\2410569.UCREATIVE\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\elgon\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -49,6 +44,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -65,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

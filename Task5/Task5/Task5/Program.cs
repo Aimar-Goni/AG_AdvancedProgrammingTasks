@@ -130,7 +130,7 @@ public class Program
     public static void Main(string[] args)
     {
 
-        string jsonData = File.ReadAllText("../../../data/spells.json");
+        string jsonData = System.IO.File.ReadAllText("../../../data/spells.json");
         // Deserialize the JSON into a list of Spell objects
         List<Spell> spells = JsonConvert.DeserializeObject<List<Spell>>(jsonData);
 
