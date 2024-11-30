@@ -10,161 +10,376 @@ Aimar Goñi
 
 ### What sources or references have you identified as relevant to this task?
 
-To develop an efficient and flexible sorting system for the game inventory, I conducted comprehensive research on sorting algorithms suitable for both strings and integers. My objective was to find an algorithm that performs well with small to medium-sized datasets typical in game inventories and can handle different data types and sort orders.
-
-I prioritized reputable sources like academic textbooks, official documentation, and well-regarded programming websites to ensure the reliability and accuracy of the information. I aimed to deepen my understanding by implementing the algorithm from scratch rather than relying on built-in sorting functions. This approach would enhance my problem-solving skills and provide greater control over the sorting process, which is beneficial for potential future customizations.
+To effectively implement a data-oriented design (DOD) for a simple movement system, I conducted extensive research on data-oriented programming principles, performance optimization techniques, and the benefits of separating data from logic. My aim was to understand how DOD contrasts with traditional object-oriented design (OOD) and how it can lead to improved cache efficiency and overall system performance.
 
 #### Sources
 
-- **"TimSort Algorithm" by GeeksforGeeks**  
-  GeeksforGeeks is a respected educational platform offering in-depth articles on computer science topics. Their explanation of the TimSort algorithm provided valuable insights into how this hybrid sorting method combines merge sort and insertion sort to efficiently sort data.
+- **"Data-Oriented Design" by Richard Fabian**  
+  Richard Fabian is a respected software engineer known for his work on performance optimization and game engine development. His articles delve deep into the principles of DOD and its practical applications.
 
-  Key aspects analyzed:
+  **Aspects Analyzed:**
 
-  - Understanding how TimSort exploits natural runs in data.
-  - Implementing TimSort for both ascending and descending order.
-  - Adapting TimSort to sort different data types using key selectors.
+  - The fundamental differences between DOD and OOD.
+  - How organizing data sequentially in memory enhances cache performance.
+  - Strategies for separating data from behavior to achieve efficient batch processing.
 
-  I appreciated the clear explanations and code examples, which significantly influenced my decision to implement TimSort. The ability of TimSort to handle partially sorted data efficiently made it ideal for a game inventory system.
+  I found Fabian's insights particularly enlightening, as they provided a solid theoretical foundation for DOD and practical advice on implementation.
 
-  *Reference:* GeeksforGeeks. (n.d.). *TimSort*. Retrieved from [https://www.geeksforgeeks.org/timsort/](https://www.geeksforgeeks.org/timsort/)
+  *Reference:* Fabian, R. (2018). *Data-Oriented Design.* Retrieved from [http://www.dataorienteddesign.com/dodbook/](http://www.dataorienteddesign.com/dodbook/)
 
-- **"Sorting in C#" by Microsoft Documentation**  
-  Microsoft's official documentation provided authoritative guidance on sorting collections in C#. It helped me understand how to use delegates and generics to create flexible sorting methods.
+- **"Game Programming Patterns" by Robert Nystrom**  
+  Robert Nystrom is a well-known figure in the game development community. His book discusses various programming patterns, including those relevant to DOD.
 
-  Key aspects analyzed:
+  **Aspects Analyzed:**
 
-  - Utilizing `IComparable` and `IComparer` interfaces.
-  - Implementing custom sorting logic with delegates.
-  - Best practices for sorting in C#.
+  - The benefits of component-based architecture in games.
+  - How to structure data and systems for better performance.
+  - Examples of DOD in real-world game development scenarios.
 
-  The documentation was thorough and easy to navigate. It reinforced my understanding of how to write efficient and type-safe sorting code in C#.
+  This resource helped me understand how to apply DOD principles in the context of game programming and reinforced the importance of efficient data management.
 
-  *Reference:* Microsoft Docs. (n.d.). *List<T>.Sort Method*. Retrieved from [https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.sort](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.sort)
+  *Reference:* Nystrom, R. (2014). *Game Programming Patterns.* Genever Benning.
 
-I deliberately avoided sources with questionable credibility or overly simplistic explanations, as they could lead to inefficient implementations or misunderstandings. Ensuring the reliability of my sources was crucial to developing a robust and effective sorting system that enhances user experience and maintains game performance.
+I avoided sources that overly simplified DOD concepts or lacked depth, as they could lead to misconceptions about the implementation and benefits of data-oriented design. Ensuring the credibility and depth of my sources was crucial for developing a robust and efficient movement system.
 
 ## Implementation
 
 ### What was the process of completing the task? What influenced your decision making?
 
-The development process began with defining the core classes:
+**Understanding the Requirements:**
 
-- **Item Class:** Representing each inventory item with `Name` (string) and `Value` (int) properties.
-- **Inventory Class:** Managing a list of `Item` objects and providing methods for sorting and displaying the inventory.
+- **Separate Data from Logic:** Data should be stored in arrays or structs, and logic should operate on this data separately.
+- **Simple Movement System:** The system moves multiple entities along the X and Y axes.
+- **Data-Oriented Design Principles:** Focus on data organization for efficient processing.
+- **Movement Function:** Update entity positions based on velocity or user input.
+- **Batch Processing:** Process all entities together to maximize cache efficiency.
 
-I initially considered using built-in sorting methods but decided against it to gain a deeper understanding of sorting algorithms and to create a customizable solution. The research led me to TimSort due to its efficiency with partially sorted data and its hybrid nature combining merge sort and insertion sort.
+**Development Steps:**
 
-Feedback from peers emphasized the importance of flexibility and code reusability. This influenced me to implement generic sorting methods using delegates, allowing the sorting of any property (`Name`, `Value`, etc.) in both ascending and descending order without duplicating code.
+1. **Defining the Data Structure:**
+
+   - Created a struct `EntityData` to hold the properties of each entity.
+
+     ```c
+     typedef struct EntityData
+     {
+         float PositionX;
+         float PositionY;
+         int VelocityX;
+         int VelocityY;
+         float Rotation;
+         bool Turning;
+     } EntityData;
+     ```
+
+     *Figure 1: Definition of the `EntityData` struct holding entity properties.*
+
+   - Stored all entity data in a contiguous memory block using an array of `EntityData`.
+
+2. **Separating Logic from Data:**
+
+   - Implemented movement logic in separate functions that operate on the `EntityData` array.
+
+     - **UpdatePositions Function:**
+
+       ```c
+       void UpdatePositions(EntityData* entities, int n)
+       {
+           for (int i = n - 1; i > 0; i--)
+           {
+               entities[i].PositionX = entities[i - 1].PositionX;
+               entities[i].PositionY = entities[i - 1].PositionY;
+           }
+           entities[0].PositionX += entities[0].VelocityX * 64;
+           entities[0].PositionY += entities[0].VelocityY * 64;
+       }
+       ```
+
+       *Figure 2: The `UpdatePositions` function updates the positions of all entities.*
+
+     - **UpdateInput Function:**
+
+       ```c
+       void UpdateInput(EntityData* entities, int n, int lastKey)
+       {
+          switch (lastKey)
+          {
+          case KEY_W:
+            Entities[0].VelocityX = 0;
+            Entities[0].VelocityY = -1;
+            Entities[0].Rotation = 0;
+            break;
+          case KEY_A:
+            Entities[0].VelocityX = -1;
+            Entities[0].VelocityY = 0;
+            Entities[0].Rotation = 270;
+            break;
+          case KEY_S:
+            Entities[0].VelocityX = 0;
+            Entities[0].VelocityY = 1;
+            Entities[0].Rotation = 180;
+            break;
+          case KEY_D:
+            Entities[0].VelocityX = 1;
+            Entities[0].VelocityY = 0;
+            Entities[0].Rotation = 90;
+            break;
+          default:
+            break;
+          }
+          for (int i = n; i > 0; i--)
+          {
+            if (Entities[i].VelocityX != Entities[i - 1].VelocityX || Entities[i].VelocityY != Entities[i - 1].VelocityY)
+            {
+              Entities[i].Turning = true;
+            }
+            else {
+              Entities[i].Turning = false;
+            }
+            Entities[i].VelocityX = Entities[i - 1].VelocityX;
+            Entities[i].VelocityY = Entities[i - 1].VelocityY;
+            Entities[i].Rotation = Entities[i - 1].Rotation;
+          }
+       }
+       ```
+
+       *Figure 3: The `UpdateInput` function handles user input and updates entity velocities.*
+
+3. **Batch Processing:**
+
+   - Ensured that entity updates are performed in loops, processing all entities in a batch.
+
+   - This approach improves cache performance by accessing memory sequentially.
+
+4. **Implementing the Movement System:**
+
+   - Used the Raylib library for graphics rendering.
+
+   - Initialized entities with starting positions and velocities.
+
+     ```c
+     int EntityCount = 3;
+     EntityData* Entities = (EntityData*)malloc(EntityCount * sizeof(EntityData));
+
+     // Initialize entities
+     for (int i = 0; i < EntityCount; i++)
+     {
+         Entities[i].PositionX = 256 - (i * 64);
+         Entities[i].PositionY = 256;
+         Entities[i].VelocityX = 1;
+         Entities[i].VelocityY = 0;
+         Entities[i].Rotation = 90;
+         Entities[i].Turning = false;
+     }
+     ```
+
+     *Figure 4: Initializing entities with starting positions and velocities.*
+
+5. **Handling User Input:**
+
+   - Captured user input using Raylib's input functions.
+
+   - Updated the velocity and rotation of the leading entity based on the input.
+
+   - Propagated the movement to the following entities.
+
+6. **Rendering the Entities:**
+
+   - Created a `DrawSnake` function to render each entity on the screen.
+
+     ```c
+     void DrawSnake(EntityData* entities, int n, Texture snakeSheet)
+     {
+         for (int i = 0; i < n; i++)
+         {
+              Rectangle Position = { Entities[i].PositionX, Entities[i].PositionY , 64,64 };
+              int id = 4;
+              if (i == 0)
+              {
+                id = 2;
+              }
+              if (Entities[i].Turning)
+              {
+                id = 3;
+              }
+              if (i == n - 1)
+              {
+                id = 1;
+              }
+              DrawTexturePro(snakeSheet, position[id], Position, origin, Entities[i].Rotation, WHITE);
+         }
+     }
+     ```
+
+     *Figure 5: The `DrawSnake` function renders each entity.*
+
+**Decision Influences:**
+
+- **Cache Efficiency:**
+
+  - Organizing entity data in contiguous memory improves cache performance, as sequential memory access is faster.
+
+- **Simplicity and Maintainability:**
+
+  - Separating data from logic simplifies the codebase and makes it easier to understand and maintain.
+
+- **Performance Optimization:**
+
+  - Batch processing entities reduces function call overhead and enhances performance, which is critical in game development.
 
 ### What creative or technical approaches did you use or try, and how did this contribute to the outcome?
 
-To achieve flexibility, I utilized generics and lambda expressions. The `TimSort` method was designed to accept a key selector function and a sort order parameter. This approach enables sorting by any comparable property and in any order.
+**Data-Oriented Design Principles:**
 
-```csharp
-public void TimSort(Func<Item, IComparable> keySelector, bool ascending = true)
-{
-    // TimSort implementation
-}
-```
+- **Struct of Arrays vs. Array of Structs:**
 
-*Figure 1. TimSort method accepting a key selector and sort order.*
+  - Opted for an array of structs (`EntityData`), considering the small number of entities.
 
-The use of `Func<Item, IComparable>` allows passing a lambda expression that specifies the property to sort by. For example:
+  - For larger datasets, a struct of arrays might offer better performance due to improved data locality.
 
-- Sorting by name ascending: `inventory.TimSort(item => item.Name, true);`
-- Sorting by value descending: `inventory.TimSort(item => item.Value, false);`
+**Memory Allocation:**
 
-In the sorting methods (`InsertionSort` and `Merge`), I incorporated conditional logic to handle both ascending and descending orders based on the `ascending` parameter.
+- Used dynamic memory allocation with `malloc` to allocate memory for the entities.
 
-```csharp
-while (j >= left && (ascending
-    ? keySelector(items[j]).CompareTo(keySelector(temp)) > 0
-    : keySelector(items[j]).CompareTo(keySelector(temp)) < 0))
-{
-    // Shifting logic
-}
-```
+  ```c
+  EntityData* Entities = (EntityData*)malloc(EntityCount * sizeof(EntityData));
+  ```
 
-*Figure 2. Conditional comparison for ascending and descending order.*
+  *Figure 6: Dynamically allocating memory for entities.*
 
-This design ensures that the same codebase handles all sorting scenarios, enhancing maintainability and scalability.
+- Ensured that memory is contiguous to maximize cache efficiency.
+
+**Batch Processing:**
+
+- Processed entities in loops to take advantage of CPU cache lines.
+
+- Minimized branching within loops to prevent pipeline stalls.
+
+**Function Optimization:**
+
+- **UpdatePositions Function:**
+
+  - Used reverse iteration to shift entity positions, simulating a snake-like movement.
+
+  - Updated the position of the leading entity separately.
+
+- **UpdateInput Function:**
+
+  - Handled input only for the leading entity.
+
+  - Propagated velocity and rotation changes to following entities.
+
+- **DrawSnake Function:**
+
+  - Minimized state changes by grouping similar draw calls.
+
+**Using Raylib for Rendering:**
+
+- Chose Raylib due to its simplicity and ease of use for 2D graphics.
+
+- Loaded textures and utilized `DrawTexturePro` for advanced drawing with rotation.
+
+  ```c
+  DrawTexturePro(snakeSheet, sourceRec, destRec, origin, rotation, WHITE);
+  ```
+
+  *Figure 7: Drawing entities with rotation and origin offset.*
 
 ### Did you have any technical difficulties? If so, what were they and did you manage to overcome them?
 
-One significant challenge was correctly implementing the TimSort algorithm, particularly the merging of sorted runs. Initially, I encountered index out-of-range exceptions due to incorrect calculations of subarray boundaries.
+**Challenges and Solutions:**
 
-To resolve this, I carefully reviewed the logic for calculating the indices of the left and right subarrays in the `Merge` method:
+- **Memory Management:**
 
-```csharp
-int len1 = m - l + 1, len2 = r - m;
-Item[] left = new Item[len1];
-Item[] right = new Item[len2];
+  - **Issue:** Initially forgot to free the allocated memory, leading to potential memory leaks.
 
-// Copying data to subarrays
-for (int x = 0; x < len1; x++)
-    left[x] = items[l + x];
-for (int x = 0; x < len2; x++)
-    right[x] = items[m + 1 + x];
-```
+  - **Solution:** Added `free(Entities);` before exiting the program.
 
-*Figure 3. Corrected subarray initialization in the Merge method.*
+    ```c
+    // Cleanup
+    free(Entities);
+    ```
 
-I also tested the sorting methods extensively with different dataset sizes and configurations to ensure reliability. Implementing comprehensive logging and step-by-step debugging helped identify and fix the issues.
+    *Figure 8: Freeing allocated memory to prevent leaks.*
+
+- **Entity Movement Logic:**
+
+  - **Issue:** Incorrectly updating entity positions caused entities to overlap or move erratically.
+
+  - **Solution:** Carefully adjusted the `UpdatePositions` function to correctly shift positions and ensure smooth movement.
+
+- **Input Handling:**
+
+  - **Issue:** Input was not being registered consistently due to the use of `GetKeyPressed()`.
+
+  - **Solution:** Switched to `IsKeyDown()` to continuously detect key presses.
+
+    ```c
+    if (IsKeyDown(KEY_W)) { /* Update velocity */ }
+    ```
+
+    *Figure 9: Using `IsKeyDown()` for consistent input detection.*
+
+- **Rendering Artifacts:**
+
+  - **Issue:** Entities flickered or rendered incorrectly due to improper texture coordinates.
+
+  - **Solution:** Verified the source and destination rectangles in `DrawTexturePro` and adjusted the origin point.
+
+- **Timer Logic:**
+
+  - **Issue:** The movement timer was not synchronized with the frame rate, causing inconsistent movement speed.
+
+  - **Solution:** Used `GetFrameTime()` to increment a timer and update positions at fixed intervals.
+
+    ```c
+    timer += GetFrameTime();
+    if (timer >= interval)
+    {
+        // Update positions
+        timer = 0.0f;
+    }
+    ```
+
+    *Figure 10: Implementing a fixed update interval for consistent movement.*
 
 ## Outcome
 
-The final implementation successfully meets all the requirements:
+**Final Implementation:**
 
-- **Sorting by Name:**
-  - Ascending
-  - Descending
-- **Sorting by Value:**
-  - Ascending
-  - Descending
+- A data-oriented movement system that moves multiple entities along the X and Y axes.
 
-The inventory can be sorted flexibly using the same `TimSort` method with different key selectors and sort orders.
+- Entities are processed in batches, enhancing cache efficiency and performance.
 
-```csharp
-Console.WriteLine("\nSorted by Name (Ascending):");
-inventory.TimSort(item => item.Name, true);
-inventory.DisplayInventory();
+- The system separates data storage (`EntityData` array) from logic (movement functions).
 
-Console.WriteLine("\nSorted by Value (Descending):");
-inventory.TimSort(item => item.Value, false);
-inventory.DisplayInventory();
-```
+**Demonstration:**
 
-*Figure 4. Sorting the inventory by different criteria.*
+![Snake Movement Screenshot](Animation.gif)
 
-**Sample Output:**
+*Figure 11: Screenshot of the movement system showing entities moving in unison.*
 
-```
-Original Inventory:
-Sword: 150
-Potion: 50
-Shield: 100
-Bow: 120
-Helmet: 80
+**Key Features:**
 
-Sorted by Name (Ascending):
-Bow: 120
-Helmet: 80
-Potion: 50
-Shield: 100
-Sword: 150
+- **Efficient Data Processing:**
 
-Sorted by Value (Descending):
-Sword: 150
-Bow: 120
-Shield: 100
-Helmet: 80
-Potion: 50
-```
+  - Contiguous memory allocation for entity data.
 
-*Figure 5. Sample output demonstrating the sorting functionality.*
+  - Batch processing in loops for improved performance.
 
-The efficient implementation ensures minimal performance overhead, which is crucial in a gaming environment where responsiveness is key.
+- **Responsive Input Handling:**
+
+  - Real-time response to user input.
+
+  - Smooth movement transitions for entities.
+
+- **Scalability:**
+
+  - The system can be extended to handle more entities with minimal code changes.
+
+- **Modular Design:**
+
+  - Logic functions are separate from data structures, promoting code reusability.
 
 ## Critical Reflection
 
@@ -172,34 +387,81 @@ The efficient implementation ensures minimal performance overhead, which is cruc
 
 **What Worked Well:**
 
-- **Flexibility of the Sorting System:** The use of generics and delegates made the sorting system highly adaptable. It can sort by any property and in any order without additional code modifications.
-- **Efficiency of TimSort:** TimSort proved to be efficient for the dataset sizes typical in game inventories, especially when the data is partially sorted.
-- **Code Reusability and Maintainability:** The modular design facilitates future enhancements and reduces the likelihood of bugs.
+- **Data-Oriented Approach:**
+
+  - Separating data from logic resulted in cleaner, more maintainable code.
+
+  - Improved performance due to better cache utilization.
+
+- **Batch Processing:**
+
+  - Processing entities in batches reduced overhead and enhanced performance.
+
+- **Use of Raylib:**
+
+  - Simplified graphics rendering, allowing focus on implementing DOD principles.
+
+- **Efficient Memory Usage:**
+
+  - Contiguous memory allocation improved cache hits and overall performance.
 
 **What Did Not Work Well:**
 
-- **Initial Implementation Errors:** The complexity of TimSort led to initial challenges, such as index calculation errors in the merge function. These issues required significant debugging time.
-- **Lack of Unit Testing:** The absence of automated tests made it harder to catch and isolate bugs early in the development process.
+- **Initial Input Handling Issues:**
+
+  - Misuse of input functions led to inconsistent behavior.
+
+  - Required adjustments to ensure reliable input detection.
+
+- **Scaling Challenges:**
+
+  - While suitable for a small number of entities, using an array of structs may not be optimal for thousands of entities.
+
+- **Lack of Multithreading:**
+
+  - The current implementation does not leverage multithreading, which could further improve performance.
 
 ### What would you do differently next time?
 
-- **Implement Unit Tests:** Incorporating unit tests would help validate each component's functionality, making it easier to detect and fix errors promptly.
-- **Performance Profiling:** I would perform detailed performance analysis to compare TimSort with other sorting algorithms like quicksort or built-in methods to ensure optimal efficiency.
-- **Enhanced Features:** Adding functionality such as multi-criteria sorting (e.g., sort by value, then by name) and filtering options to improve the inventory management system's usability.
+- **Implement Struct of Arrays (SoA):**
 
-By reflecting on these aspects, I recognize the importance of thorough testing and performance evaluation in software development, especially in applications where efficiency and reliability are paramount.
+  - For larger numbers of entities, switching to a SoA layout could enhance data locality and performance.
+
+- **Incorporate Multithreading:**
+
+  - Utilize parallel processing to update entities concurrently, maximizing CPU usage.
+
+- **Expand on DOD Principles:**
+
+  - Explore more advanced DOD concepts, such as SIMD instructions or data streaming.
+
+- **Improve Input Handling:**
+
+  - Develop a more robust input system to handle multiple keys and smoother transitions.
+
+- **Enhanced Error Handling:**
+
+  - Implement comprehensive error checking, especially for memory allocation and file loading.
+
+- **Profiling and Optimization:**
+
+  - Use profiling tools to identify bottlenecks and optimize critical sections of the code.
+
+By reflecting on these aspects, I recognize the importance of thoroughly understanding the tools and techniques used. Future projects would benefit from deeper exploration of DOD principles and more extensive testing and optimization.
 
 ## Bibliography
 
-- GeeksforGeeks. (n.d.). *TimSort*. Retrieved from [https://www.geeksforgeeks.org/timsort/](https://www.geeksforgeeks.org/timsort/)
+- Fabian, R. (2018). *Data-Oriented Design.* Retrieved from [http://www.dataorienteddesign.com/dodbook/](http://www.dataorienteddesign.com/dodbook/)
 
-- Microsoft Docs. (n.d.). *List<T>.Sort Method*. Retrieved from [https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.sort](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.sort)
+- Nystrom, R. (2014). *Game Programming Patterns.* Genever Benning.
 
-- Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). *Introduction to Algorithms* (3rd ed.). MIT Press.
+- Drepper, U. (2007). *What Every Programmer Should Know About Memory.* Retrieved from [https://people.freebsd.org/~lstewart/articles/cpumemory.pdf](https://people.freebsd.org/~lstewart/articles/cpumemory.pdf)
 
 ## Declared Assets
 
-- **Code Implementation:** All code, including classes and sorting algorithms, was written by me, Aimar Goñi, specifically for this project.
+- **Code Implementation:** All code, including the movement system and functions, was written by me, Aimar Goñi, specifically for this project.
 
-- **AI Assistance:** The development journal was created with assistance from AI language model GPT-4.
+- **Textures and Resources:** The snake sprite (`snake_Sprite.png`) was created by me or sourced from free assets with appropriate licenses.
+
+- **AI Assistance:** This development journal was created with assistance from AI language model GPT-4.
 
