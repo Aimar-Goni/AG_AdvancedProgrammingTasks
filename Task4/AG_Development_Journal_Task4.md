@@ -1,4 +1,4 @@
-# Implementing Inventory Sorting System
+# Implementing Branching Dialogue System
 
 Advanced Games Programming 24/25
 

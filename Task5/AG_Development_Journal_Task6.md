@@ -1,4 +1,4 @@
-# Implementing Inventory Sorting System
+# Implementing Spellbook Search
 
 Advanced Games Programming 24/25
 

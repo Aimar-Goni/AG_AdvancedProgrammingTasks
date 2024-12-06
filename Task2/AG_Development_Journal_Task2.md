@@ -1,4 +1,4 @@
-a# Implementing Inventory Sorting System
+## Implementing Educational Maths Game Development
 
 Advanced Games Programming 24/25
 

@@ -1,4 +1,4 @@
-# Implementing Inventory Sorting System
+# Health Potion Optimization
 
 Advanced Games Programming 24/25
 
